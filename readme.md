@@ -19,11 +19,23 @@ Esportare quindi il diagramma in pnge caricarlo nella repo come visto in classe.
 
 ## Esecuzione
 
+### Entità e tabelle
+
 In base alla consegna, queste sono le entità e relative tabelle che ho individuato:
+
 - dipartimenti
 - corsi_laurea
 - corsi_curriculum
 - insegnanti
-- appelli_esami
+- appelli_esame
 - studenti
+
+### Relazioni
+
+- dipartimenti <-> corsi_laurea = one to many
+- corsi_laurea <-> corsi_curriculum = one to many
+- corsi_curriculum <-> insegnanti = many to many
+- corsi-curriculum <-> appelli_esame = one to many
+- corsi_laurea <-> studenti = one to many
+- studenti <-> appelli_esame = many to many
 
