@@ -25,19 +25,76 @@ In base alla consegna, queste sono le entità e relative tabelle che ho individu
 
 - dipartimenti
 - corsi_laurea
-- corsi_curriculum
+- insegnamenti
 - insegnanti
-- appelli_esame
+- appelli
 - studenti
 
 ### Relazioni
 
 - dipartimenti <-> corsi_laurea = one to many
-- corsi_laurea <-> corsi_curriculum = one to many (?)
-- corsi_curriculum <-> insegnanti = many to many
-- corsi-curriculum <-> appelli_esame = one to many
+- corsi_laurea <-> insegnamenti = one to many
+- insegnamenti <-> insegnanti = many to many
+- insegnamenti <-> appelli = one to many
 - corsi_laurea <-> studenti = one to many
-- studenti <-> appelli_esame = many to many
+- studenti <-> appelli = many to many
+
+### Colonne e relativi data-types
+
+- dipartimenti
+    - id
+    - nome [VARCHAR(255)]
+    - direttore [VARCHAR(255)]
+    - sede_centrale [VARCHAR(255)]
+    - email [VARCHAR(255)]
+    - pec [VARCHAR(255)]
+    - centralino [VARCHAR(25)]
+
+- corsi_laurea
+    - id
+    - dipartimento_id []
+    - tipo []
+    - accesso []
+    - crediti_totali []
+    - modalità_didattica []
+    - durata []
+    - sede []   
+
+- insegnamenti
+    - id
+    - corso_laurea_id []
+    - anno []
+    - crediti []
+    - tipo_esame []
+    - periodo_didattico []
+    - obbligatorietà []
+    - monte_ore []
+    - sede []
+
+- insegnanti
+    - id []
+    - nome []
+    - cognome []
+    - telefono []
+    - email []
+    - livello_accademico []
+    - contratto []
+
+- appelli
+    - id []
+    - insegnamento_id []
+    - data_inizio []
+    - data_fine []
+    - tipo_sessione []
+
+- studenti
+    - id []
+    - nome []
+    - cognome []
+    - email []
+    - telefono []
+
+
 
 
 
