@@ -33,9 +33,11 @@ In base alla consegna, queste sono le entità e relative tabelle che ho individu
 ### Relazioni
 
 - dipartimenti <-> corsi_laurea = one to many
-- corsi_laurea <-> corsi_curriculum = one to many
+- corsi_laurea <-> corsi_curriculum = one to many (?)
 - corsi_curriculum <-> insegnanti = many to many
 - corsi-curriculum <-> appelli_esame = one to many
 - corsi_laurea <-> studenti = one to many
 - studenti <-> appelli_esame = many to many
+
+
 
