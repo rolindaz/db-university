@@ -8,3 +8,13 @@
 6. Selezionare tutti i corsi di laurea magistrale (38)
 7. Da quanti dipartimenti è composta l'università? (12)
 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
+
+## Esecuzione
+
+1. Selezionare tutti gli studenti nati nel 1990 (160)
+
+```sql
+SELECT * FROM `students` LIKE '1990%';
+````
+**Result:**
+160 rows
