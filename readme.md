@@ -44,8 +44,8 @@ In base alla consegna, queste sono le entità e relative tabelle che ho individu
 - dipartimenti
     - id [INTEGER, NOT_NULL, UNIQUE, AUTO_INCREMENT] [es.: 1234]
     - nome [VARCHAR(255), UNIQUE, NOT_NULL] [es.: 'Dipartimento di Filosofia e Scienze dell'Educazione']
-    - direttore [VARCHAR(255)] [es.: 'Graziano Lingua']
     - sede_centrale [VARCHAR(255)] [es.: 'Via S. Ottavio, 20, 10124, Torino']
+    - direttore [VARCHAR(255)] [es.: 'Graziano Lingua']
     - email [VARCHAR(255)] [es.: 'direzione.dfe@unito.it']
     - sito_web [VARCHAR(255)] [es.: 'https://www.dfe.unito.it/do/home.pl']
     - centralino [VARCHAR(25)] [es.: '+39 011 6703608']
