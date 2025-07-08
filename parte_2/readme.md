@@ -31,7 +31,7 @@ SELECT * FROM `courses` WHERE `cfu` > 10;
 
 ```sql
 SELECT * FROM `students` WHERE `date_of_birth` <= '1995-07-08';
-SELECT * FROM `students` WHERE `date_of_birth` = DATE_BIRTH(CURDATE(), INTERVAL 30 YEARS);
+SELECT * FROM `students` WHERE `date_of_birth` <= DATE_SUB(CURDATE(), INTERVAL 30 YEAR) LIMIT 0, 10000;
 ```
     Result:
     3860 rows
