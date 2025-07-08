@@ -15,6 +15,31 @@
 
 ```sql
 SELECT * FROM `students` LIKE '1990%';
-````
-**Result:**
-160 rows
+```
+    Result:
+    160 rows
+
+2. Selezionare tutti i corsi che valgono più di 10 crediti (479)
+
+```sql
+SELECT * FROM `courses` WHERE `cfu` > 10;
+```
+    Result:
+    479 rows
+
+3. Selezionare tutti gli studenti che hanno più di 30 anni
+
+```sql
+SELECT * FROM `students` WHERE `date_of_birth` <= '1995-07-08';
+SELECT * FROM `students` WHERE `date_of_birth` = DATE_BIRTH(CURDATE(), INTERVAL 30 YEARS);
+```
+    Result:
+    3860 rows
+
+4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di laurea (286)
+
+```sql
+SELECT * FROM `courses` WHERE `period` = 'I semestre' AND `year` = 1;
+```
+    Result:
+    286 rows
