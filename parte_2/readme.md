@@ -59,3 +59,12 @@ SELECT * FROM `degrees` WHERE `name` LIKE '%Magistrale%';
 ```
     Result:
     38 rows
+
+7. Da quanti dipartimenti è composta l'università? (12)
+
+```sql
+SELECT COUNT(`id`) FROM `departments`;
+```
+    Result:
+    12
+    
