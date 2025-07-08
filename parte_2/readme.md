@@ -51,3 +51,11 @@ SELECT * FROM `exams` WHERE `date` = '2020-06-20' AND `hour` > '13:59:59';
 ```
     Result:
     21 rows
+
+6. Selezionare tutti i corsi di laurea magistrale (38)
+
+```sql
+SELECT * FROM `degrees` WHERE `name` LIKE '%Magistrale%';
+```
+    Result:
+    38 rows
