@@ -138,3 +138,30 @@ AND `degrees`.`level` = 'magistrale';
 [Tabella](./results/j2.html)
 
 ---
+
+3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
+
+**RAGIONAMENTO:**  
+
+'Selezionare tutti' --> SELECT *  
+'corsi' --> prima tabella di riferimento: `courses`  
+'in cui insegna Fulvio Amato' --> seconda tabella di riferimento: `teachers`  
+mi servirà anche la tabella `course_teacher` per associare gli id.
+Devo quindi individuare l'id del teacher la cui colonna `name` = 'Fulvio' e la cui colonna `surname` = 'Amato' e selezionare gli id dei corsi che gli sono associati nella tabella `course_teacher`. Poi seleziono i corsi dalla tabella `courses` partendo dall'id.
+
+**SVOLGIMENTO:**
+```sql
+SELECT * 
+FROM `courses`
+LEFT JOIN `course_teacher`
+ON `courses`.`id` = `course_teacher`.`course_id`
+LEFT JOIN `teachers`
+ON `teachers`.`id` = `course_teacher`.`teacher_id`
+WHERE `teachers`.`name` = 'Fulvio'
+AND `teachers`.`surname` = 'Amato';
+```
+**Result:**
+
+[Tabella](./results/j3.html)
+
+---
