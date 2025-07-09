@@ -98,7 +98,7 @@ SELECT DISTINCT(`department_id`) AS `id_dipartimento`, COUNT(`id`) AS `corsi_lau
 
 **RAGIONAMENTO:**  
 
-'Selezionare' --> SELECT COUNT()  
+'Selezionare tutti' --> SELECT *  
 'studenti' --> prima tabella di riferimento: `students`  
 'Corso di Laurea in Economia' --> seconda tabella di riferimento: `degrees`  
 devo individuare l'id del corso di laurea la cui colonna `name` = 'Corso di Laurea in Economia' e selezionare gli studenti la cui colonna `degree_id` corrisponde a quell'id.
@@ -113,5 +113,28 @@ WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
 **Result:**
 
 [Tabella](./results/j1.html)
+
+---
+
+2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
+
+**RAGIONAMENTO:**  
+
+'Selezionare tutti' --> SELECT *  
+'Corsi di Laurea Magistrale' --> prima tabella di riferimento: `degrees`  
+'Dipartimento di Neuroscienze' --> seconda tabella di riferimento: `departments`  
+devo individuare l'id del dipartimento la cui colonna `name` = 'Dipartimento di Neuroscienze' e selezionare i corsi di laurea la cui colonna `department_id` corrisponde a quell'id e la cui colonna `level` = 'magistrale'.
+
+**SVOLGIMENTO:**
+```sql
+SELECT * FROM `degrees`
+INNER JOIN `departments`
+ON `departments`.`id` = `degrees`.`department_id`
+WHERE `departments`.`name` = 'Dipartimento di Neuroscienze'
+AND `degrees`.`level` = 'magistrale';
+```
+**Result:**
+
+[Tabella](./results/j2.html)
 
 ---
