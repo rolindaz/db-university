@@ -71,3 +71,21 @@ SELECT DISTINCT(`exam_id`) AS `appello_esame`, AVG(`vote`) AS `media_voti` FROM 
 **Result:**
 
 [Tabella](./results/gb3.html)
+
+---
+
+4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+
+**RAGIONAMENTO:**  
+
+'Contare' --> SELECT COUNT()  
+'corsi di laurea' --> tabella di riferimento: `degrees`    
+'per ogni dipartimento' --> dovrò raggruppare per DISTINCT(`department_id`)
+
+**SVOLGIMENTO:**
+```sql
+SELECT DISTINCT(`department_id`) AS `id_dipartimento`, COUNT(`id`) AS `corsi_laurea` FROM `degrees` GROUP BY `id_dipartimento`;
+```
+**Result:**
+
+[Tabella](./results/gb4.html)
