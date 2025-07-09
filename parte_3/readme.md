@@ -38,3 +38,48 @@ SELECT DISTINCT YEAR(`enrolment_date`) AS `anno_iscrizione`, COUNT(`id`) AS `isc
 | 2019 | 1709 |
 | 2020 | 1645 |
 | 2021 | 734 |
+
+---
+
+2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+
+**RAGIONAMENTO:**  
+
+'Contare' --> SELECT COUNT()  
+'insegnanti' --> tabella di riferimento: `teachers`  
+'ufficio' --> colonna di riferimento: `office_address`  
+'nello stesso edificio' --> stesso valore in `office_address`  
+poiché voglio contare solo gli insegnanti che condividono l'edificio, dovrò ignorare i distinti valori di `office_address` che ricorrono solo una volta.
+
+**SVOLGIMENTO:**
+```sql
+SELECT DISTINCT `office_address` AS `edificio`, COUNT(`id`) AS `insegnanti_per_edificio` FROM `teachers` GROUP BY `edificio` HAVING `insegnanti_per_edificio` > 1;
+```
+**Result:**
+
+| edificio | insegnanti_per_edificio |
+| ------------- | ------------- |
+| Contrada Penelope 73 |	4 |
+| Incrocio Marini 9 |	3 |
+| Strada Vitali 8 Piano 0 |	5 |
+| Via Mariano 48 |	4 |
+| Borgo Martino 82 Appartamento 07 |	3 |
+| Rotonda Martinelli 309 |	9 |
+| Contrada Amato 58 Piano 2 |	5 |
+| Borgo Elga 89 |	8 |
+| Piazza Ferretti 619 |	3 |
+| Strada Kociss 997 Piano 8 |	5 |
+| Via Eusebio 167 Appartamento 28 |	6 |
+| Contrada Rita 5 Appartamento 71 |	3 |
+| Piazza Demian 856 Appartamento 63 |	3 |
+| Strada Neri 577 |	3 |
+| Borgo Elio 234 Piano 4 |	4 |
+| Contrada Santoro 17 Appartamento 30 |	3 |
+| Rotonda Carmela 10 Piano 1 |	6 |
+| Via Giacinto 11 Piano 8 |	3 |
+| Strada Concetta 6 |	3 |
+| Via Maika 491 |	3 |
+| Piazza Pellegrino 613 Piano 8 |	2 |
+| Strada Lombardi 855 |	3 |
+| Incrocio Testa 142 Piano 7 |	2 |
+| Rotonda Teseo 9 |	2 |
