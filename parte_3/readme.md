@@ -165,3 +165,30 @@ AND `teachers`.`surname` = 'Amato';
 [Tabella](./results/j3.html)
 
 ---
+
+4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
+
+**RAGIONAMENTO:**  
+
+'Selezionare tutti' --> SELECT *  
+'studenti' --> prima tabella di riferimento: `students`  
+'corso di laurea' --> seconda tabella di riferimento: `degrees`  
+'relativo dipartimento' ---> terza tabella di riferimento: `departments`  
+'in ordine alfabetico per cognome e nome' --> ORDER BY `students`.`surname`
+Devo associare le tre tabelle usando le colonne `degree_id` nella tabella `students` e `department_id` nella tabella `degrees`.
+
+**SVOLGIMENTO:**
+```sql
+SELECT * 
+FROM `students`
+LEFT JOIN `degrees`
+ON `degrees`.`id` = `students`.`degree_id`
+LEFT JOIN `departments`
+ON `departments`.`id` = `degrees`.`department_id`
+ORDER BY `students`.`surname`;
+```
+**Result:**
+
+[Tabella](./results/j4.html)
+
+---
