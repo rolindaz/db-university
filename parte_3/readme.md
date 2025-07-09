@@ -218,3 +218,38 @@ ON `teachers`.`id` = `course_teacher`.`teacher_id`;
 **Result:**
 
 [Tabella](./results/j5.html)
+
+---
+
+6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
+
+**RAGIONAMENTO:**  
+
+'Selezionare' --> SELECT  
+'docenti' --> prima tabella di riferimento: `teachers`  
+'Dipartimento di Matematica' --> seconda tabella di riferimento: `departments`  
+mi servono anche le tabelle `course_teacher`, `courses` e `degrees` per associare gli id dei teachers a quelli dei corsi e recuperare dalla tabella dei corsi di laurea la colonna `department_id` da ricollegare alla tabella `departments` in cui la colonna `name` = 'Dipartimento di Matematica'.
+Per evitare ripetizioni devo usare SELECT DISTINCT id dei teachers.
+
+**SVOLGIMENTO:**
+```sql
+SELECT DISTINCT `teachers`.`id`, `teachers`.`name`, `teachers`.`surname`
+FROM `teachers`
+LEFT JOIN `course_teacher`
+ON `teachers`.`id` = `course_teacher`.`teacher_id`
+LEFT JOIN `courses`
+ON `courses`.`id` = `course_teacher`.`course_id`
+LEFT JOIN `degrees`
+ON `degrees`.`id` = `courses`.`degree_id`
+LEFT JOIN `departments`
+ON `departments`.`id` = `degrees`.`department_id`
+WHERE `departments`.`name` = 'Dipartimento di Matematica';
+```
+**Result:**
+
+54 rows
+[Tabella](./results/j6.html)
+
+---
+
+7. **BONUS**: Selezionare per ogni studente il numero di tentativi sostenuti per ogni esame, stampando anche il voto massimo. Successivamente, filtrare i tentativi con voto minimo 18.
