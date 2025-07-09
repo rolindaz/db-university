@@ -32,12 +32,7 @@ SELECT DISTINCT YEAR(`enrolment_date`) AS `anno_iscrizione`, COUNT(`id`) AS `isc
 ```
 **Result:**
 
-| anno_iscrizione | iscritti_per_anno |
-| ------------- | ------------- |
-| 2018 | 912 |
-| 2019 | 1709 |
-| 2020 | 1645 |
-| 2021 | 734 |
+[Tabella](./results/gb1.html)
 
 ---
 
@@ -57,29 +52,22 @@ SELECT DISTINCT `office_address` AS `edificio`, COUNT(`id`) AS `insegnanti_per_e
 ```
 **Result:**
 
-| edificio | insegnanti_per_edificio |
-| ------------- | ------------- |
-| Contrada Penelope 73 |	4 |
-| Incrocio Marini 9 |	3 |
-| Strada Vitali 8 Piano 0 |	5 |
-| Via Mariano 48 |	4 |
-| Borgo Martino 82 Appartamento 07 |	3 |
-| Rotonda Martinelli 309 |	9 |
-| Contrada Amato 58 Piano 2 |	5 |
-| Borgo Elga 89 |	8 |
-| Piazza Ferretti 619 |	3 |
-| Strada Kociss 997 Piano 8 |	5 |
-| Via Eusebio 167 Appartamento 28 |	6 |
-| Contrada Rita 5 Appartamento 71 |	3 |
-| Piazza Demian 856 Appartamento 63 |	3 |
-| Strada Neri 577 |	3 |
-| Borgo Elio 234 Piano 4 |	4 |
-| Contrada Santoro 17 Appartamento 30 |	3 |
-| Rotonda Carmela 10 Piano 1 |	6 |
-| Via Giacinto 11 Piano 8 |	3 |
-| Strada Concetta 6 |	3 |
-| Via Maika 491 |	3 |
-| Piazza Pellegrino 613 Piano 8 |	2 |
-| Strada Lombardi 855 |	3 |
-| Incrocio Testa 142 Piano 7 |	2 |
-| Rotonda Teseo 9 |	2 |
+[Tabella](./results/gb2.html)
+
+---
+
+3. Calcolare la media dei voti di ogni appello d'esame
+
+**RAGIONAMENTO:**  
+
+'Calcolare la media' --> SELECT AVG()  
+'voti' --> tabella di riferimento: `exam_student`    
+'di ogni appello d'esame' --> dovrò raggruppare per DISTINCT(`exam_id`)
+
+**SVOLGIMENTO:**
+```sql
+SELECT DISTINCT(`exam_id`) AS `appello_esame`, AVG(`vote`) AS `media_voti` FROM `exam_student` GROUP BY `appello_esame`;
+```
+**Result:**
+
+[Tabella](./results/gb3.html)
