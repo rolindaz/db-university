@@ -19,3 +19,22 @@
 
 ### Group by:
 1. Contare quanti iscritti ci sono stati ogni anno
+
+**RAGIONAMENTO:**  
+
+'Contare quanti' --> SELECT COUNT()  
+'iscritti' --> tabella di riferimento: `students`  
+'ogni anno' --> ho bisogno di individuare ogni singola distinta istanza di YEAR(`enrolment_date`) e usarla per il raggruppamento
+
+**SVOLGIMENTO:**
+```sql
+SELECT DISTINCT YEAR(`enrolment_date`) AS `anno_iscrizione`, COUNT(`id`) AS `iscritti_per_anno` FROM `students` GROUP BY `anno_iscrizione`;
+```
+**Result:**
+
+| anno_iscrizione | iscritti_per_anno |
+| ------------- | ------------- |
+| 2018 | 912 |
+| 2019 | 1709 |
+| 2020 | 1645 |
+| 2021 | 734 |
