@@ -78,7 +78,8 @@ SELECT DISTINCT(`exam_id`) AS `appello_esame`, AVG(`vote`) AS `media_voti` FROM 
 
 **RAGIONAMENTO:**  
 
-'Contare' --> SELECT COUNT()  
+'Co by:
+1. Contare quanti ntare' --> SELECT COUNT()  
 'corsi di laurea' --> tabella di riferimento: `degrees`    
 'per ogni dipartimento' --> dovrò raggruppare per DISTINCT(`department_id`)
 
@@ -89,3 +90,28 @@ SELECT DISTINCT(`department_id`) AS `id_dipartimento`, COUNT(`id`) AS `corsi_lau
 **Result:**
 
 [Tabella](./results/gb4.html)
+
+---
+
+### Join
+1. Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
+
+**RAGIONAMENTO:**  
+
+'Selezionare' --> SELECT COUNT()  
+'studenti' --> prima tabella di riferimento: `students`  
+'Corso di Laurea in Economia' --> seconda tabella di riferimento: `degrees`  
+devo individuare l'id del corso di laurea la cui colonna `name` = 'Corso di Laurea in Economia' e selezionare gli studenti la cui colonna `degree_id` corrisponde a quell'id.
+
+**SVOLGIMENTO:**
+```sql
+SELECT * FROM `students`
+INNER JOIN `degrees`
+ON `degrees`.`id` = `students`.`degree_id`
+WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
+```
+**Result:**
+
+[Tabella](./results/j1.html)
+
+---
