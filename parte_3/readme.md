@@ -192,3 +192,29 @@ ORDER BY `students`.`surname`;
 [Tabella](./results/j4.html)
 
 ---
+
+5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
+
+**RAGIONAMENTO:**  
+
+'Selezionare tutti' --> SELECT *  
+'corsi di laurea' --> prima tabella di riferimento: `degrees`  
+'con i relativi corsi' --> seconda tabella di riferimento: `courses`  
+'e insegnanti' ---> terza tabella di riferimento: `teachers`  
+mi servirà anche la tabella `course_teacher` per associare gli id.
+Devo associare le quattro tabelle usando le colonne `course_id` e `teacher_id` nella tabella `course_teacher` e riportandoli alla tabella `degrees`.
+
+**SVOLGIMENTO:**
+```sql
+SELECT * 
+FROM `degrees`
+LEFT JOIN `courses`
+ON `degrees`.`id` = `courses`.`degree_id`
+LEFT JOIN `course_teacher`
+ON `courses`.`id` = `course_teacher`.`course_id`
+LEFT JOIN `teachers`
+ON `teachers`.`id` = `course_teacher`.`teacher_id`;
+```
+**Result:**
+
+[Tabella](./results/j5.html)
